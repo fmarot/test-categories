@@ -8,4 +8,15 @@
 
 === Maven dependency
 
+The plugin is available from Maven Central:
+
+[source,xml]
+-------------------------------------------
+	<dependency>
+		<groupId>com.teamtter.test</groupId>
+		<artifactId>test-categories</artifactId>
+		<version>0.0.1</version>
+	</dependency>
+-------------------------------------------
+
 === Surefire configuration

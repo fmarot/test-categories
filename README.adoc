@@ -1,0 +1,11 @@
+= test-categories
+
+ 
+
+== What's this ?
+
+== How to use
+
+=== Maven dependency
+
+=== Surefire configuration

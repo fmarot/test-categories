@@ -1,0 +1,231 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.teamtter.test</groupId>
+	<artifactId>test-categories</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.1</version>
+
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>Categories for JUnit test that are defined outside your multi-module Maven project (hence no recursive problems when you use them in your parent pom)</description>
+	<url>https://github.com/fmarot/test-categories</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.version>3.3.3</maven.version>
+
+		<compiler.source>1.7</compiler.source>
+		<compiler.target>1.7</compiler.target>
+		
+		<compiler.plugin.version>3.3</compiler.plugin.version>
+		<resources.plugin.version>2.7</resources.plugin.version>
+		<plugin.plugin.version>3.4</plugin.plugin.version>
+		<plexus.component.metadata.version>1.5.5</plexus.component.metadata.version>
+		<source.plugin.version>2.1.2</source.plugin.version>
+		<javadoc.plugin.version>2.7</javadoc.plugin.version>
+		<invoker.plugin.version>2.0.0</invoker.plugin.version>
+		
+		<commons.compress.version>1.10</commons.compress.version>
+		<tukaani.xz.version>1.5</tukaani.xz.version>
+		<jackson.version>2.6.0</jackson.version>
+	</properties>
+
+
+	<licenses>
+		<license>
+			<name>Apache License 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Francois MAROT</name>
+			<email>myFirstName.myLastName@gmail.com</email>
+			<organization>Home</organization>
+			<organizationUrl>http://careers.stackoverflow.com/francoismarot</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:fmarot/test-categories.git</connection>
+		<developerConnection>scm:git:git@github.com:fmarot/test-categories.git</developerConnection>
+		<url>git@github.com:fmarot/test-categories.git</url>
+	</scm>
+
+	<distributionManagement>
+		<!-- To deploy to Maven Central, if you are using the Maven deploy plugin, which is the default behavior, we need this "distributionManagement" section. -->
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.plugin.version}</version>
+				<configuration>
+					<source>${compiler.source}</source>
+					<target>${compiler.target}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${resources.plugin.version}</version>
+			</plugin>
+<!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>${plugin.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-descriptor</id>
+						<phase>process-classes</phase>
+					</execution>
+					<execution>
+						<id>help-goal</id>
+						<goals>
+							<goal>helpmojo</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-component-metadata</artifactId>
+				<version>${plexus.component.metadata.version}</version>
+				<executions>
+					<execution>
+						<id>process-classes</id>
+						<goals>
+							<goal>generate-metadata</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>process-test-classes</id>
+						<goals>
+							<goal>generate-test-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			-->
+			<plugin>
+				<!-- used to generate & deploy sources -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${source.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<!-- used to generate & deploy javadoc -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${javadoc.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+<!-- 		<pluginManagement> -->
+<!-- 			<plugins> -->
+<!-- 				<plugin> -->
+<!-- 					<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 					<artifactId>maven-release-plugin</artifactId> -->
+<!-- 					<version>2.1</version> -->
+<!-- 					<configuration> -->
+<!-- 						<mavenExecutorId>forked-path</mavenExecutorId> -->
+<!-- 						<useReleaseProfile>false</useReleaseProfile> -->
+<!-- 						<arguments>-Pgpgsign,mavennativesgpg</arguments> -->
+<!-- 					</configuration> -->
+<!-- 				</plugin> -->
+<!-- 			</plugins> -->
+<!-- 		</pluginManagement> -->
+	</build>
+
+	<dependencies>
+
+		<!-- Maven plugin specific -->
+		<!--
+		<dependency>
+			<groupId>org.apache.maven.plugin-tools</groupId>
+			<artifactId>maven-plugin-annotations</artifactId>
+			<version>3.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-artifact</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-model</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-core</artifactId>
+			<version>${maven.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugin-testing</groupId>
+			<artifactId>maven-plugin-testing-harness</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.sonatype.plexus</groupId>
+			<artifactId>plexus-build-api</artifactId>
+			<version>0.0.7</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.plexus</groupId>
+			<artifactId>plexus-component-annotations</artifactId>
+			<version>1.0-beta-3.0.5</version>
+		</dependency>
+		-->
+	</dependencies>
+
+
+</project>

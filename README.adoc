@@ -4,19 +4,42 @@
 
 == What's this ?
 
+More info on how to use Maven and JUnit Categories here: http://stackoverflow.com/a/18297553/259988
+
 == How to use
 
 === Maven dependency
 
-The plugin is available from Maven Central:
+This lib is available from Maven Central:
 
 [source,xml]
 -------------------------------------------
 	<dependency>
 		<groupId>com.teamtter.test</groupId>
 		<artifactId>test-categories</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.4</version>
 	</dependency>
 -------------------------------------------
 
 === Surefire configuration
+
+You may configure your pom as demonstrated below.
+This allows you to have GUI tests executed on your Continuous Integration (Jenkins ?) but not on the command line by default.
+* GUI tests have to be annotated with the JUnit @Category annotation: @Test @Category(com.teamtter.test.categories.GuiTest.class)
+* On your CI, add -DexcludeGUITests=com.teamtter.test.categories.None so that GUI tests are not excluded.
+
+[source,xml]
+-------------------------------------------
+	<properties>
+		<excludeGUITests>com.teamtter.test.categories.GuiTest</excludeGUITests>    <!-- for Jenkins, use -DexcludeGUITests=com.teamtter.test.categories.None to have GUI tests executed -->
+	</properties>
+
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-surefire-plugin</artifactId>
+		<version>2.19.1</version>
+		<configuration>
+			<excludedGroups>${excludeGUITests}</excludedGroups>
+		</configuration>
+	</plugin>
+-------------------------------------------

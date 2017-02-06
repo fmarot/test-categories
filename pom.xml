@@ -4,7 +4,7 @@
 	<groupId>com.teamtter.test</groupId>
 	<artifactId>test-categories</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Categories for JUnit test that are defined outside your multi-module Maven project (hence no recursive problems when you use them in your parent pom)</description>
